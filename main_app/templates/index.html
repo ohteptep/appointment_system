@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUPC Appointment System - Home</title>
+    <link href="{% static 'assets/tupclogo.png' %}" rel="icon">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom_style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-custom">
+        <div class="container">
+            <div class="container-fluid flex-nav">
+                <div class="tup-title">
+                    <img class="image-nav" src="{% static 'assets/tupclogo.png' %}" width="70" alt="">
+                    <h4 class="custom-title">Technological University of the Philippines</h4> 
+                  </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container marg-top">
+        <div class="card card_custom">
+            <div class="row">
+                <div class="col text-center">
+                    <br>
+                    <form action="{% url 'login_admin' %}">
+                        <button class="btn btn-custom">
+                            <i class='bx bxs-user bx-lg'></i>
+                            <h3 class="card-title">ADMIN</h3>
+                        </button>
+                    </form>
+                    <br><br>
+                    <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">Administrator is the one who is legally appointed to manage all registered student accounts and can monitor all the appointment forms submitted through the system.</p>
+                </div>
+                <div class="col text-center">
+                    <br>
+                    <form action="{% url 'login_student' %}">
+                        <button class="btn btn-custom">
+                            <i class='bx bxs-user-rectangle bx-lg'></i>
+                            <h3 class="card-title">STUDENT</h3>
+                        </button>
+                    </form>
+                    <br><br>
+                    <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">Students can simply submit an appointment with their respective created accounts.</p>
+                </div>
+                <div class="col text-center">
+                    <br>
+                    <form action="{% url 'book_app' %}">
+                        <button class="btn btn-custom">
+                            <i class='bx bxs-user-pin bx-lg' ></i>
+                            <h3 class="card-title">GUEST</h3>
+                        </button>
+                    </form>
+                    <br><br>
+                    <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">Guests can submit an appointment without creating an account.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+      
+
+
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+         AOS.init({
+            duration: 3000,
+            once: true,
+        });
+    </script>
+</body>
+</html>

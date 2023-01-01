@@ -1,0 +1,87 @@
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.bg-custom{
+    background-color: rgb(151, 8, 8);
+}
+.custom-title{
+    margin-left: 10px;
+}
+.card_custom{
+    border: none;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.marg-top{
+    margin-top: 90px;
+}
+.forgot{
+    text-decoration: none;
+}
+.bx-custom{
+    font-size: 70px;
+}
+.btn-custom{
+    border-radius: 20px;
+    padding: 20px;
+    width: 350px;
+    height: 300px;
+    background-color:  rgb(151, 8, 8);
+    color: white;
+}
+.btn-custom:hover{
+    background-color: rgb(180, 21, 21);
+    color: rgb(255, 255, 255);
+}
+.card_custom-2{
+    padding: 50px;  
+    border-radius: 20px;
+    box-shadow: 4px 4px rgb(151, 8, 8);
+}
+.flex-nav{
+    position: relative;
+    display: flex;
+}
+.tup-title{
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.icon-flex{
+    display: flex;
+    align-items: center;
+}
+.bx-right{
+    margin-right: 5px;
+}
+.bx-left{
+    margin-left: 5px;
+}
+
+
+@media only screen and (max-width: 445px) {
+    .btn-custom{
+        padding: 20px;
+        width: 250px;
+        height: 200px;
+    }
+
+  }
+
+  @media only screen and (max-width: 355px) {
+    .btn-custom{
+        padding: 20px;
+        width: 200px;
+        height: 150px;
+    }
+    .custom-title{
+        font-size: 18px;
+    }
+
+  }
+
+
+
+
+

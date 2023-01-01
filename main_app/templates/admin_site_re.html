@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>TUPC Online Appointment Admin Site</title>
+  <link rel="icon" href="{% static 'assets/tupclogo.png' %}" type="image/x-icon">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="{% static 'css/AdminLTE.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/skin-red.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bower_components/font-awesome/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bower_components/Ionicons/css/ionicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+
+<body class="hold-transition skin-red sidebar-mini">
+<div class="wrapper">
+
+  <header class="main-header">
+    <a href="" class="logo">
+      <span class="logo-mini">TUPC</span>
+      <span class="logo-lg">TUPC Admin Site</span>
+    </a>
+
+    <nav class="navbar navbar-static-top" role="navigation">
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="{% static 'assets/tupclogo.png' %}" class="user-image" alt="User Image">
+              <span class="hidden-xs">{{dept_name}}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="user-header">
+                <img src="{% static 'assets/tupclogo.png' %}" class="img-circle" alt="User Image">
+
+                <p>
+                  {{dept_name}}
+                </p>
+
+              </li>
+              <li class="user-footer">
+                <div>
+                  <a href="{% url 'logout_admin' %}" class="btn btn-success btn-flat btn-block">Log out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <aside class="main-sidebar">
+    <section class="sidebar">
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="{% static 'assets/tupclogo.png' %}" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Welcome, <br>Research & Extension <br>Personel</p>
+        </div>
+      </div>
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">Main Navigation</li>
+        <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li><a href="{% url 'logout_admin' %}"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        Technological University of the Philippines - Cavite
+        <small>Online Appointment</small>
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+
+
+      <div class="box" id="approve">
+        <div class="box-header">
+          <h3 class="box-title"><strong>CSS (Customer Service Satisfaction) Forms</strong></h3>
+        </div>
+        <div class="box-body table-responsive">
+          <form action="{% url 'generatePDF' %}">
+            <button type="submit" class="btn btn-primary">Generate PDF <i class="fa fa-download"></i></button>
+          </form>
+          <br><br>
+          <table id="example2" class="table table-bordered table-hover table-sm" style="text-align: center;" >
+            <thead>
+              <tr class="table-secondary">
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Transaction</th>
+                <th>Timeliness/Efficiency</th>
+                <th>Completeness/Accuracy</th>
+                <th>Professionalism</th>
+                <th>Courteousness</th>
+                <th>Overall Satisfaction</th>
+                <th>Feedback</th>
+                <th>Comments</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for c in cssform %}
+              <tr>
+                <td>{{c.contact}}</td>
+                <td>{{c.email}}</td>
+                <td>{{c.transaction}}</td>
+                <td>{{c.timeliness}}</td>
+                <td>{{c.completeness}}</td>
+                <td>{{c.professionalism}}</td>
+                <td>{{c.courteousness}}</td>
+                <td>{{c.overall}}</td>
+                <td>{{c.feedback}}</td>
+                <td>{{c.comment}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+  
+    </section>
+  </div>
+
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      Online Appointment
+    </div>
+    <strong><a target="_blank" href="https://www.tupcavite.edu.ph/">Technological University of the Philippines - Cavite</a></strong>
+  </footer>
+
+
+<script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/adminlte.min.js' %}"></script>
+<script src="{% static 'bower_components/datatables.net/js/jquery.dataTables.js' %}"></script>
+<script src="{% static 'bower_components/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+<script src="{% static 'bower_components/jquery-slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'bower_components/fastclick/lib/fastclick.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{% for message in messages %}
+<script>
+    Swal.fire({
+        title: '{{message}}',
+        confirmButtonColor: '#d33',
+        })
+</script>
+{% endfor %}
+
+<script>
+  $(function () {
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : true
+    })
+
+
+  })
+</script>
+
+</body>
+</html>

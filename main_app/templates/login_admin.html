@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link href="{% static 'assets/tupclogo.png' %}" rel="icon">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom_style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-custom ">
+        <div class="container">
+            <div class="container-fluid flex-nav">
+                <div class="tup-title">
+                    <img class="image-nav" src="{% static 'assets/tupclogo.png' %}" width="70" alt="">
+                    <h4 class="custom-title">Technological University of the Philippines</h4> 
+                  </div>
+            </div>
+        </div>
+    </nav>
+    
+
+    <div class="d-flex flex-row-reverse bd-highlight">
+        <a href="{% url 'login_superuser' %}" style="text-decoration: none; color:rgb(151, 8, 8);">Login as Superuser <i class='bx bx-right-arrow-alt'></i> </a>
+      </div>
+    <div class="container marg-top d-flex justify-content-center" data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">
+        <div class="card card_custom-2">
+            <i class='bx bxs-user-rectangle bx-custom text-center'></i>
+            <br>
+            <form method="POST">
+                {% csrf_token %}
+                <h3 class="text-center">Admin - Login</h3>
+                <br>
+                <div class="form-outline mb-4">
+                    <select name="department" class="form-select" id="" required>
+                        <option value="" selected disabled>Select Department</option>
+                        <option value="OAA">Office of Academic Affair (OAA)</option>
+                        <option value="DIT">Department of Information Technology (DIT)</option>
+                        <option value="DLA">Department of Liberal Arts (DLA)</option>
+                        <option value="OCL">Office of Campus Library (OCL)</option>
+                        <option value="DMS">Department of Mathematics and Science (DMS)</option>
+                        <option value="DOE">Department of Engineering (DOE)</option>
+                        <option value="DED">Department of Education (DED)</option>
+                        <option value="OSA">Office of Student Affairs (OSA)</option>
+                        <option value="UITC">University Information Technology Center (UITC)</option>
+                        <option value="DPE">Department of Physical Education (DPE)</option>
+                        <option value="SD">Security Department (SD)</option>
+                        <option value="RE">Office of Research & Extension (ORE)</option>
+                    </select>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="text" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="5" class="form-control" name="username" placeholder="I.D Number" required/>
+                  </div>
+                <div class="form-outline mb-4">
+                  <input type="password" id="" class="form-control" name="password" placeholder="Password" required/>
+                </div>
+                <div class="row mb-4">
+                  <div class="col">
+                    <a href="{% url 'reset_password' %}" class="forgot">Forgot password?</a>
+                  </div>
+                </div>
+                <div class="text-center">
+                    <a class="btn btn-secondary" href="{% url 'Home' %}">Back</a>
+                    <button type="submit" class="btn btn-danger">Sign in</button>
+                </div>
+              </form>
+        </div>
+    </div>
+
+    <br><br>
+
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+         AOS.init({
+            duration: 3000,
+            once: true,
+        });
+    </script>
+    {% for message in messages %}
+    <script>
+        Swal.fire({
+            title: '{{message}}',
+            confirmButtonColor: '#d33',
+            })
+    </script>
+    {% endfor %}
+
+</body>
+</html>
